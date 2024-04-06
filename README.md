@@ -44,3 +44,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## The style of the game is Greek, but the chess itself is classic
+![image](https://github.com/Urryy/chess/assets/94054268/f3a34bfa-c45a-4ea9-b6d8-ca1f7d567464)
+
