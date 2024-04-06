@@ -1,38 +1,208 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app{
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: no-repeat center/100% url('./Assets/1674702954_top-fon-com-p-fon-dlya-prezentatsii-grecheskii-stil-28.jpg');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.board{
+  width: calc(64px * 8);
+  height: calc(64px * 8);
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cell{
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell img{
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.selected{
+  background-color: rgb(198 169 103) !important;
+}
+
+.black{
+  background-color: rgb(0 0 0 / 71%);;
+}
+.white{
+  background-color: rgb(120 134 133 / 63%);; 
+}
+
+.available{
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: rgb(255 219 138) !important;
+}
+
+.lost{
+  height: calc(40vh - 60px);
+  padding: 30px;
+  background-color: rgb(255 255 255 / 43%);
+}
+
+.timer{
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: calc(64px* 8);
+  margin-right: 20px;
+}
+
+.overlay{
+  background-color: rgba(49,49,49,0.8);
+}
+.modal, .overlay{
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 1;
+}
+
+.modal-content{
+  position: absolute;
+  max-width: 400px;
+  max-height: 400px;
+  top: 40%;
+  left: 40%;
+  border-radius: 0.8rem;
+  background-color: rgb(141, 174, 204);
+  width: 250px;
+  z-index: 1;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-modal{
+  flex: 1 1 20%;
+  padding: 18px 22px 5px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+
+}
+
+.modal-border{
+  border-bottom: 1px solid black;
+}
+
+.header-modal__close{
+  cursor: pointer;
+}
+
+.body-modal{
+  padding: 18px 22px;
+  font-weight: 600;
+  flex: 1 1 80%;
+}
+
+.check-king{
+  background-color: rgb(255, 174, 35) !important;
+}
+
+.board-header{
+  padding: 17px 0px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.lost-component{
+  border: 1px solid black;
+  margin-left: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.west{
+  width: 150px;
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  height: 150px;
+  top: 4%;
+  right: 17%;
+  transform: rotate(212deg);
+  z-index: 1;
+  background: no-repeat left/100% url('./Assets/grekvenok.png');
+}
+
+.east{
+  width: 150px;
+  height: 150px;
+  transform: rotate(30deg);
+  bottom: 4%;
+  right: 24%;
+  position: absolute;
+  background: no-repeat right/100% url('./Assets/grekvenok.png');
+}
+
+.restart-button{
+  padding: 7px 10px;
+  background-color: rgb(255 255 255 / 43%);
+  border-radius: 3px;
+  border: 1px solid black;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: font-weight 0.5 ease-in-out;
+  transition: background-color 0.5 ease-in-out;
+  width: 120px;
+}
+
+.restart-button:hover{
+  background-color: rgb(255 255 255 / 50%);
+  transition: font-weight 0.5 ease-in-out;
+  transition: background-color 0.5 ease-in-out;
+
+}
+
+.restart-button:active{
+  font-weight: 700;
+  background-color: rgb(255 255 255 / 80%);
+  transition: font-weight 0.5 ease-in-out;
+  transition: background-color 0.5 ease-in-out;
+}
+
+.chess-component{
+  display: flex;
+  align-items: center;
+}
+
+.timer{
+  margin-right: 30px;
+}
+
+.reverse{
+  transform: rotate(180deg);
+}
+
+.reverse-base{
+
+  transform: rotate(0deg);
+}
+
+.reverse-board-transition{
+  transition: transform 1.0s;
 }
