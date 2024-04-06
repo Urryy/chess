@@ -45,7 +45,7 @@ export class Board{
     }
 
     public highlightCells(selectedCell: Cell | null){
-        let ownKing = selectedCell?.getKingByColor();
+        let ownKing = selectedCell?.getKingByColor(selectedCell.figure?.color);
         let oppositeCells = selectedCell !== null && selectedCell.figure !== null ? this.getCellsByColor(selectedCell!.figure.color) : [];
         for (let y = 0; y < this.cells.length; y++) {
             const row: Cell[] = this.cells[y];

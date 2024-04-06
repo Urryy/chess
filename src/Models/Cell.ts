@@ -21,12 +21,12 @@ export class Cell{
         this.id = Math.random();
     }
 
-    getKingByColor(): Cell | null{
+    getKingByColor(color: Colors | undefined): Cell | null{
         let king = null 
         for (let i = 0; i < this.board.cells.length; i++) {
             const row = this.board.cells[i];
             for (let j = 0; j < row.length; j++) {
-                if(row[j].figure?.name === FigureNames.KING && row[j].figure?.color === this.figure?.color)
+                if(row[j].figure?.name === FigureNames.KING && row[j].figure?.color === color)
                     return row[j];
             }
         }
@@ -69,17 +69,16 @@ export class Cell{
     }
 
     isCheckForKing(): boolean{
-        var cellWithKing: Cell | null = null;
-        
+/*         var cellWithKing: Cell | null = null;
         for (let y = 0; y < this.board.cells.length; y++) {
             const row: Cell[] = this.board.cells[y];
             for (let x = 0; x < row.length; x++) {
                 if(row[x].figure?.name === FigureNames.KING && this.figure?.color !== row[x].figure?.color)
                     cellWithKing = row[x];
             }
-        }
-        
-        if(this.figure?.isCheckForKing(cellWithKing!))
+        } */
+        let king = this.getKingByColor(this.figure?.color === Colors.WHITE ? Colors.BLACK : Colors.BLACK)
+        if(this.figure?.isCheckForKing(king!))
             return true;
 
         return false;

@@ -29,8 +29,9 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, swapPlayer, restart })
         if(playerContext?.currentPlayer?.checkMate !== false)
             return;
 
-        let king = selectedCell?.getKingByColor();
+        let king = selectedCell?.getKingByColor(selectedCell.figure?.color);
         let oppositCells = selectedCell?.board.getCellsByColor(selectedCell.figure!.color);
+        
         if(selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)
             && selectedCell.board.figureCanMakeThisStep(selectedCell, cell, king, oppositCells!)){
             if(playerContext.currentPlayer.check === true){
